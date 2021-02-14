@@ -38,13 +38,15 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added');
+  element.classList.toggle('added');
  
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  } else {
-    alert('Hey, Already added !')
+  } 
+  else {
+    sliders.splice(item, 1);
+    // alert('Hey, Already added !')
   }
 }
 var timer
@@ -83,7 +85,7 @@ const createSlider = () => {
       changeSlide(slideIndex);
     }, duration);
   }
-  else if(duration < 1){
+  if(duration < 1){
     alert("Duration cannot be less than 1 millisecond")
   }
 
